@@ -20,6 +20,7 @@ extern struct gene_count *gene_table[HASH_TABLE_SIZE];
 // Function prototypes
 unsigned int hash_function(const char *gene_name);
 void increment_gene_count(const char *gene_name);
-int get_gene_count(const char *gene_name);  // New function prototype
+int get_gene_count(const char *gene_name);
+int get_total_gene_count();
 
 #endif  // GENE_COUNT_HASH_H
