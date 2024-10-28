@@ -46,3 +46,20 @@ int get_gene_count(const char *gene_name) {
 
     return 0;  // If the gene is not found, return 0
 }
+
+int get_total_gene_count() {
+    int total_gene_count = 0;
+
+    // Loop through each index of the hash table
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) {
+        struct gene_count *entry = gene_table[i];
+
+        // Traverse the linked list at this index
+        while (entry != NULL) {
+            total_gene_count += entry->count;  // Add the count for this gene
+            entry = entry->next;               // Move to the next node in the list
+        }
+    }
+
+    return total_gene_count;
+}
