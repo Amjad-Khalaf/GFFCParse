@@ -1,5 +1,5 @@
-library(ggplot2)
-library(dplyr)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
 library(scales)
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -35,7 +35,7 @@ exon_plot <- ggplot(exon_count, aes(x = `num_exons`, y = Transcript_Count, fill 
   annotate("text", x = max(exon_count$num_exons), y = ten_percent_line, label = "10% of Transcripts", color = "red", vjust = -0.5, hjust = 1) +
   labs(x = "\nNumber of Exons", y = "Number of Transcripts\n") +
   theme_bw() +
-  theme(legend.title = element_blank(), legend.position = c(0.8, 0.8)) +
+  theme(legend.title = element_blank(), legend.position.inside = c(0.8, 0.8)) +
   scale_x_continuous(breaks = seq(0, max(exon_count$num_exons), by = 1))
 
 create_and_save_plot(exon_plot, "exon_count")
@@ -54,7 +54,7 @@ intron_plot <- ggplot(intron_count, aes(x = `num_introns`, y = Transcript_Count,
   annotate("text", x = max(intron_count$num_introns), y = ten_percent_line_intron, label = "10% of Transcripts", color = "red", vjust = -0.5, hjust = 1) +
   labs(x = "\nNumber of Introns", y = "Number of Transcripts\n") +
   theme_bw() +
-  theme(legend.title = element_blank(), legend.position = c(0.8, 0.8)) +
+  theme(legend.title = element_blank(), legend.position.inside = c(0.8, 0.8)) +
   scale_x_continuous(breaks = seq(0, max(intron_count$num_introns), by = 1))
 
 create_and_save_plot(intron_plot, "intron_count")
@@ -68,7 +68,7 @@ length_density_plot <- ggplot(data, aes(x = mRNA_len, color = Exon_Category, fil
   scale_x_continuous(labels = comma) +
   labs(x = "\nTranscript Length / bp", y = "Density\n") +
   theme_bw() +
-  theme(legend.title = element_blank(), legend.position = c(0.8, 0.8))
+  theme(legend.title = element_blank(), legend.position.inside = c(0.8, 0.8))
 
 create_and_save_plot(length_density_plot, "mRNA_length")
 
